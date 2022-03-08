@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [saa]
+    WITH PASSWORD = N'eoqio^{>eoVejorcTrujxt#mmsFT7_&#$!~<Mbd{ilx|ad{g', SID = 0xA51C4E6F859A97499E6CFA2360CFBEE2, DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+
