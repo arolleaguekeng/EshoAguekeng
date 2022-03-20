@@ -1,6 +1,6 @@
 ﻿using EshoAguekeng.Repository;
+using EshopAguekeng.Models;
 using EshopAguekeng.Repository;
-using EshopAguekeng.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace EshopAguekeng.WebApi.Controllers
             var category = categoryRepository.Get(id);
             if (category == null)
                 return NotFound();
-            return   Ok ((new CategoryModel(category)));
+            return base.Ok(MapCategory(category));
         }
 
         [HttpGet]
@@ -32,8 +32,10 @@ namespace EshopAguekeng.WebApi.Controllers
             var category = categoryRepository.Get(name);
             if (category == null)
                 return NotFound();
-            return Ok(new CategoryModel(category));
+            return base.Ok(MapCategory(category));
         }
+
+
 
         [HttpGet]
         public IHttpActionResult Find(string value)
@@ -45,7 +47,7 @@ namespace EshopAguekeng.WebApi.Controllers
                     x=>
                     x.Name.ToLower().Contains(searchValue)
                 );
-            return Ok(category.Select(x=> new CategoryModel(x)).ToArray());
+            return Ok(category.Select(x=>MapCategory(x)).ToArray());
         }
         public IHttpActionResult Post(CategoryModel model)
         {
@@ -60,7 +62,7 @@ namespace EshopAguekeng.WebApi.Controllers
                         model.UserId
                     );
                  category = categoryRepository.Add(category);
-                return Ok(new CategoryModel(category));
+                return base.Ok(MapCategory(category));
             }
             catch (ArgumentNullException ex)
             {
@@ -91,7 +93,7 @@ namespace EshopAguekeng.WebApi.Controllers
                         model.UserId
                     );
                 category = categoryRepository.Set(category);
-                return Ok(new CategoryModel(category));
+                return base.Ok(MapCategory(category));
             }
             catch (ArgumentNullException ex)
             {
@@ -113,7 +115,24 @@ namespace EshopAguekeng.WebApi.Controllers
         {
 
             var category = categoryRepository.Delete(id);
-            return Ok(new CategoryModel(category));
+            return base.Ok(MapCategory(category));
+        }
+
+        private CategoryModel MapCategory(Category category)
+        {
+            return new CategoryModel
+            (
+                category.Id,
+                category.Name,
+                category.UserId,
+                new UserModel
+                (
+                    category.User.Id,
+                    category.User.Username,
+                    category.User.Fullname,
+                    category.User.Role
+                )
+            );
         }
     }
 }

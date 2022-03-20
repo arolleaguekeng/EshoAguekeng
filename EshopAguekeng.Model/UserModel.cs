@@ -1,10 +1,9 @@
-﻿using EshopAguekeng.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EshopAguekeng.WebApi.Models
+namespace EshopAguekeng.Models
 {
     public class UserModel
     {
@@ -28,11 +27,6 @@ namespace EshopAguekeng.WebApi.Models
 
         public UserModel(int id, string username, string fullname, string role,string password)
             :this(id,username,fullname,role)
-        {
-            Password = password;
-        }
-        public UserModel(User user, string password = null)
-            :this(user?.Id ?? 0,user?.Username,user?.Fullname,user?.Role)
         {
             Password = password;
         }

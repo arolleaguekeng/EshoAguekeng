@@ -1,6 +1,6 @@
 ﻿using EshoAguekeng.Repository;
+using EshopAguekeng.Models;
 using EshopAguekeng.Repository;
-using EshopAguekeng.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +23,10 @@ namespace EshopAguekeng.WebApi.Controllers
             var user = userRepository.Get(id);
             if (user == null)
                 return NotFound();
-            return   Ok (new UserModel(user,userRepository.CreateMD5Hash(user.Password)));
+            return MapUser(user);
         }
+
+
 
         [HttpGet]
         public IHttpActionResult Get(string username)
@@ -32,7 +34,7 @@ namespace EshopAguekeng.WebApi.Controllers
             var user = userRepository.Get(username);
             if (user == null)
                 return NotFound();
-            return Ok(new UserModel(user));
+            return MapUser(user);
         }
 
         [HttpGet]
@@ -41,7 +43,7 @@ namespace EshopAguekeng.WebApi.Controllers
             var user = userRepository.Get(username,password);
             if (user == null)
                 return NotFound();
-            return Ok(new UserModel(user));
+            return MapUser(user);
         }
         public IHttpActionResult Post(UserModel model)
         {
@@ -57,7 +59,7 @@ namespace EshopAguekeng.WebApi.Controllers
                         model.Role,
                         model.Password);
                 user = userRepository.Add(user);
-                return Ok(new UserModel(user));
+                return MapUser(user);
             }
             catch(ArgumentNullException ex)
             {
@@ -87,7 +89,7 @@ namespace EshopAguekeng.WebApi.Controllers
                         model.Role,
                         model.Password);
                 user = userRepository.Set(user);
-                return Ok(new UserModel(user));
+                return MapUser(user);
             }
             catch (ArgumentNullException ex)
             {
@@ -102,6 +104,19 @@ namespace EshopAguekeng.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
 
+        }
+        private IHttpActionResult MapUser(User user)
+        {
+            return Ok
+                (
+                    new UserModel
+                    (
+                         user.Id,
+                         user.Username,
+                         user.Fullname,
+                         user.Password
+                    )
+                );
         }
     }
 }

@@ -96,8 +96,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +111,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EshopAguekeng.Model\EshopAguekeng.Model.csproj">
+      <Project>{d254f150-a71c-4df6-8c96-09e936cb4912}</Project>
+      <Name>EshopAguekeng.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EshopAguekeng.Repository\EshopAguekeng.Repository.csproj">
       <Project>{434E883F-E8A6-4153-BD02-64F18BE2B835}</Project>
       <Name>EshopAguekeng.Repository</Name>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EshopAguekeng.Repository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EshopAguekeng.WebApi", "EshopAguekeng.WebApi\EshopAguekeng.WebApi.csproj", "{F9D9DF70-BFE5-461B-B46F-6610E56926BF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshopAguekeng.Model", "EshopAguekeng.Model\EshopAguekeng.Model.csproj", "{D254F150-A71C-4DF6-8C96-09E936CB4912}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{F9D9DF70-BFE5-461B-B46F-6610E56926BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9D9DF70-BFE5-461B-B46F-6610E56926BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9D9DF70-BFE5-461B-B46F-6610E56926BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D254F150-A71C-4DF6-8C96-09E936CB4912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D254F150-A71C-4DF6-8C96-09E936CB4912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D254F150-A71C-4DF6-8C96-09E936CB4912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D254F150-A71C-4DF6-8C96-09E936CB4912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
