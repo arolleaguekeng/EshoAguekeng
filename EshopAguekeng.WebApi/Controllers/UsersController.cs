@@ -45,7 +45,7 @@ namespace EshopAguekeng.WebApi.Controllers
                 return NotFound();
             return MapUser(user);
         }
-        public IHttpActionResult Post(UserModel model)
+        public IHttpActionResult Post([FromBody] UserModel model)
         {
             try
             {
