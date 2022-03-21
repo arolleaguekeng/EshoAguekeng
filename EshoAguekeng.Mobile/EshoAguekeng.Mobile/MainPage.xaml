@@ -4,13 +4,35 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EshoAguekeng.Mobile.MainPage">
+             x:Class="EshoAguekeng.Mobile.MainPage"
+             BackgroundColor="WhiteSmoke">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+    <Grid>
+        <StackLayout Spacing="10" VerticalOptions="Center" Padding="20">
+            <!-- Place new controls here -->
+            <Label Text="Log In" FontSize="Title" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="txtUserName" Placeholder="Enter Your user name"/>
+            <Entry x:Name="txtPassword" IsPassword="True" Placeholder="Enter Your Password"/>
+            <Button x:Name="btnConnect"
+                Text="Connect" 
+                Clicked="btnConnect_Clicked"
+                Style="{DynamicResource ButtonStyle}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Register"
+                    BackgroundColor="Transparent" 
+                    TextColor="Green"/>
+                <Button Text="Forgoten password ?"
+                    BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" FontSize="Small"/>
+            </StackLayout>
+        </StackLayout>
+        <ActivityIndicator  x:Name="Loader" IsVisible="False" IsRunning="True" VerticalOptions="Center"/>
+    </Grid>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Blue"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

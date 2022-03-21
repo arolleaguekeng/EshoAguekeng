@@ -16,10 +16,10 @@ namespace EshoAguekeng.Services
             client.BaseAddress = new Uri(baseAddress);
         }
 
-        public async Task<UserModel> Login(string username, string password)
+        public async Task<UserModel> LoginAsync(string username, string password)
         {
             //http://localhost:8081/api
-            string url = $"/Users/username={username}&password={password}";
+            string url = $"{client.BaseAddress.AbsoluteUri}Users/username={username}&password={password}";
             var response = await client.GetAsync(url);
             var data = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
@@ -37,7 +37,7 @@ namespace EshoAguekeng.Services
             }
         }
 
-        public async Task<UserModel> Get(int id)
+        public async Task<UserModel> GetAsync(int id)
         {
             //http://localhost:8081/api
             string url = $"/Users/{id}";
@@ -58,7 +58,7 @@ namespace EshoAguekeng.Services
             }
         }
 
-        public async Task<UserModel> Create(UserModel user)
+        public async Task<UserModel> CreateAsync(UserModel user)
         {
             //http://localhost:8081/api
             string url = $"/Users";
@@ -85,7 +85,7 @@ namespace EshoAguekeng.Services
             }
         }
 
-        public async Task<UserModel> Update(UserModel user)
+        public async Task<UserModel> UpdateAsync(UserModel user)
         {
             //http://localhost:8081/api
             string url = $"/Users";

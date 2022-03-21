@@ -6,6 +6,7 @@ namespace EshoAguekeng.Mobile
 {
     public partial class App : Application
     {
+        public const string ServiceBaseAddress = "http://192.168.43.1:8180/api";
         public App()
         {
             InitializeComponent();
