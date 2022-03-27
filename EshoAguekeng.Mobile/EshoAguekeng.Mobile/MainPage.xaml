@@ -5,22 +5,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="EshoAguekeng.Mobile.MainPage"
-             BackgroundColor="WhiteSmoke">
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.HasNavigationBar="False">
 
     <Grid>
         <StackLayout Spacing="10" VerticalOptions="Center" Padding="20">
             <!-- Place new controls here -->
-            <Label Text="Log In" FontSize="Title" HorizontalTextAlignment="Center"/>
+            <Label Text="Log In" 
+                   FontSize="Title" 
+                   HorizontalTextAlignment="Center"
+                   FontFamily="FontSamantha"/>
             <Entry x:Name="txtUserName" Placeholder="Enter Your user name"/>
-            <Entry x:Name="txtPassword" IsPassword="True" Placeholder="Enter Your Password"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="txtPassword" IsPassword="True" Placeholder="Enter Your Password"
+                       HorizontalOptions="FillAndExpand"/>
+                <ImageButton
+                    x:Name="BtnEye"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="Transparent"
+                    Clicked="BtnEye_Clicked">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            x:Name="FisEye"
+                            Color="Black"
+                            Glyph="&#xf06e;"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout>
+
             <Button x:Name="btnConnect"
                 Text="Connect" 
                 Clicked="btnConnect_Clicked"
                 Style="{DynamicResource ButtonStyle}"/>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Register"
+                <Button
+                    x:Name="Register"
+                    Text="Register"
                     BackgroundColor="Transparent" 
-                    TextColor="Green"/>
+                    TextColor="Green"
+                    Clicked="Register_Clicked"/>
                 <Button Text="Forgoten password ?"
                     BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" FontSize="Small"/>
             </StackLayout>
@@ -30,7 +53,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Blue"/>
+                <Setter Property="BackgroundColor" Value="#000000"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
         </ResourceDictionary>

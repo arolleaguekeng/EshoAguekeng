@@ -1,4 +1,5 @@
 ﻿using EshoAguekeng.Services;
+using EshopAguekeng.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,12 +28,13 @@ namespace EshoAguekeng.Mobile
             try
             {
                 UserService service = new UserService(App.ServiceBaseAddress);
-                var user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
-                await DisplayAlert("Good", user.Fullname, "Ok");
+                UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
+                await DisplayAlert("Good", user?.Fullname, "Ok");
             }
-            catch(UnauthorizedAccessException ex)
+            catch (UnauthorizedAccessException ex)
             {
                 await DisplayAlert("Bad", ex.Message, "Ok");
+
             }
 
             catch (Exception ex)
@@ -42,7 +44,16 @@ namespace EshoAguekeng.Mobile
             }
             Loader.IsVisible = false;
             btnConnect.IsEnabled = true;
+        }
 
+        private void Register_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new FrmCreate());
+        }
+
+        private void BtnEye_Clicked(object sender, EventArgs e)
+        {
+            txtPassword.IsPassword = !txtPassword.IsPassword;
         }
     }
 }
