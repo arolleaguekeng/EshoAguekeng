@@ -4,10 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EshoAguekeng.Mobile.MainPage"
-             BackgroundColor="WhiteSmoke"
-             NavigationPage.HasNavigationBar="False">
-
+             x:Class="EshoAguekeng.Mobile.MainPage">
     <Grid>
         <StackLayout Spacing="10" VerticalOptions="Center" Padding="20">
             <!-- Place new controls here -->
@@ -58,4 +55,5 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
 </ContentPage>

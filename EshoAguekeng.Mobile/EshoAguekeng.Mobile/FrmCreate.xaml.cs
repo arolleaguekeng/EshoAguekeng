@@ -18,6 +18,13 @@ namespace EshoAguekeng.Mobile
         {
             InitializeComponent();
         }
+
+        private void btnNext_Clicked(object sender, EventArgs e)
+        {
+            framestepA.IsVisible = false;
+            framestepB.IsVisible = true;
+        }
+
         private async void btnSave_Clicked(object sender, EventArgs e)
         {
             Loader.IsVisible = true;
@@ -49,12 +56,6 @@ namespace EshoAguekeng.Mobile
             }
             Loader.IsVisible = false;
             btnSave.IsEnabled = true;
-        }
-
-        private void btnNext_Clicked(object sender, EventArgs e)
-        {
-            framestepA.IsVisible = false;
-            framestepB.IsVisible = true;
         }
 
         private void btnPreview_Clicked(object sender, EventArgs e)

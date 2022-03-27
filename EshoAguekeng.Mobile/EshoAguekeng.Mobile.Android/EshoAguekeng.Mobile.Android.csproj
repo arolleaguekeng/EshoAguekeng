@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B775FF07-786E-4B7F-8F7A-08881B55F995}</ProjectGuid>
+    <ProjectGuid>{A123B072-365A-4948-9F15-3B23CF293424}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EshoAguekeng.Mobile\EshoAguekeng.Mobile.csproj">
-      <Project>{15844ADB-C6EB-43FB-9EC0-F2A3528DEDE5}</Project>
+      <Project>{9FEB0AEB-BFCF-4D76-93EA-BF491AA6F7E3}</Project>
       <Name>EshoAguekeng.Mobile</Name>
     </ProjectReference>
   </ItemGroup>

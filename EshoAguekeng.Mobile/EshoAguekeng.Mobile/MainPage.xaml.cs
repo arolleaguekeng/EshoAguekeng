@@ -18,7 +18,11 @@ namespace EshoAguekeng.Mobile
         public MainPage()
         {
             InitializeComponent();
-            txtUserName.Text = "Admin";
+        }
+
+        private void BtnEye_Clicked(object sender, EventArgs e)
+        {
+            txtPassword.IsPassword = !txtPassword.IsPassword;
         }
 
         private async void btnConnect_Clicked(object sender, EventArgs e)
@@ -49,11 +53,6 @@ namespace EshoAguekeng.Mobile
         private void Register_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new FrmCreate());
-        }
-
-        private void BtnEye_Clicked(object sender, EventArgs e)
-        {
-            txtPassword.IsPassword = !txtPassword.IsPassword;
         }
     }
 }

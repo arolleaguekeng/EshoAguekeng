@@ -27,7 +27,7 @@
                 Padding="20" 
                 IsVisible="False"
                 x:Name="framestepB">
-            <Entry x:Name="txtRole" Placeholder="Enter Your role" />
+                <Entry x:Name="txtRole" Placeholder="Enter Your role" />
                 <Entry x:Name="txtPassword" IsPassword="True"   Placeholder="Enter Your Password"/>
                 <Button x:Name="btnSave"
                 Text="Save" 
@@ -38,7 +38,7 @@
                 Clicked="btnPreview_Clicked"
                 Style="{DynamicResource ButtonStyle}"/>
             </StackLayout>
-            
+
             <ActivityIndicator  x:Name="Loader" IsVisible="False" IsRunning="True" VerticalOptions="Center"/>
         </Grid>
     </ContentPage.Content>

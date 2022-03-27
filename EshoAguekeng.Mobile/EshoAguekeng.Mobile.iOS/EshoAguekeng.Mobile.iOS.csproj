@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F4466031-8437-4FFE-8861-098B2BD60DBD}</ProjectGuid>
+    <ProjectGuid>{5104C367-E41F-4E30-B644-1DB7A6B1C22A}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -129,7 +129,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\EshoAguekeng.Mobile\EshoAguekeng.Mobile.csproj">
-      <Project>{15844ADB-C6EB-43FB-9EC0-F2A3528DEDE5}</Project>
+      <Project>{9FEB0AEB-BFCF-4D76-93EA-BF491AA6F7E3}</Project>
       <Name>EshoAguekeng.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
