@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EshoAguekeng.Mobile.ProductEdit">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout 
+                Spacing="10" 
+                VerticalOptions="Center" 
+                Padding="20"
+                x:Name="framestepA">
+                <!-- Place new controls here -->
+                <Label Text="Add user" FontSize="Title" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="txtUserName" Placeholder="Enter Your user name" />
+                <Entry x:Name="txtFullname" Placeholder="Enter Your Full name"/>
+                <Button x:Name="btnNext"
+                Text="Next" 
+                Clicked="btnNext_Clicked"
+                Style="{DynamicResource ButtonStyle}"/>
+            </StackLayout>
+            <StackLayout 
+                Spacing="10" 
+                VerticalOptions="Center" 
+                Padding="20" 
+                IsVisible="False"
+                x:Name="framestepB">
+                <Entry x:Name="txtRole" Placeholder="Enter Your role" />
+                <Entry x:Name="txtPassword" IsPassword="True"   Placeholder="Enter Your Password"/>
+                <Button x:Name="btnSave"
+                Text="Save" 
+                Clicked="btnSave_Clicked"
+                Style="{DynamicResource ButtonStyle}"/>
+                <Button x:Name="btnPreview"
+                Text="Preview" 
+                Clicked="btnPreview_Clicked"
+                Style="{DynamicResource ButtonStyle}"/>
+            </StackLayout>
+
+            <ActivityIndicator  x:Name="Loader" IsVisible="False" IsRunning="True" VerticalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#000000"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

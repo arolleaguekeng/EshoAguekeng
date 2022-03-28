@@ -118,8 +118,10 @@ namespace EshopAguekeng.WebApi.Controllers
             return base.Ok(MapCategory(category));
         }
 
-        private CategoryModel MapCategory(Category category)
+        public static CategoryModel MapCategory(Category category)
         {
+            if (category == null)
+                return null;
             return new CategoryModel
             (
                 category.Id,

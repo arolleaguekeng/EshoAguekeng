@@ -45,6 +45,7 @@ namespace EshopAguekeng.WebApi.Controllers
                 return NotFound();
             return Ok(MapUser(user));
         }
+        [HttpPost]
         public IHttpActionResult Post([FromBody] UserModel model)
         {
             try
@@ -75,6 +76,8 @@ namespace EshopAguekeng.WebApi.Controllers
             }
 
         }
+
+        [HttpPut]
         public IHttpActionResult Put(UserModel model)
         {
             try
@@ -105,9 +108,18 @@ namespace EshopAguekeng.WebApi.Controllers
             }
 
         }
-        private UserModel MapUser(User user)
+        public static UserModel MapUser(User user)
         {
-            return new UserModel(user?.Id ?? 0, user?.Username, user?.Fullname, user?.Role, user?.Password);
+            if (user == null)
+                return null;
+            return new UserModel
+                (
+                    user?.Id ?? 0,
+                    user?.Username,
+                    user?.Fullname,
+                    user?.Role,
+                    user?.Password
+                );
         }
     }
 }

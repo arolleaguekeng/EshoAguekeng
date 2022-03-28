@@ -47,6 +47,9 @@ namespace EshoAguekeng.Repository
             var u = currentDb.Products.FirstOrDefault(x => x.Code.ToLower() == Product.Code.ToLower()) ;
             if (u != null && u.Id != oldProduct.Id)
                 throw new DuplicateWaitObjectException($"Product code {Product.Code} already exist ! ");
+
+            if (Product.Photo == null)
+                Product.Photo = oldProduct.Photo;
             db.Entry(Product).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return Product;
