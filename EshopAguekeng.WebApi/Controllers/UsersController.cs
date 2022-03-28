@@ -23,7 +23,7 @@ namespace EshopAguekeng.WebApi.Controllers
             var user = userRepository.Get(id);
             if (user == null)
                 return NotFound();
-            return MapUser(user);
+            return Ok(MapUser(user));
         }
 
 
@@ -34,7 +34,7 @@ namespace EshopAguekeng.WebApi.Controllers
             var user = userRepository.Get(username);
             if (user == null)
                 return NotFound();
-            return MapUser(user);
+            return Ok(MapUser(user));
         }
 
         [HttpGet]
@@ -43,7 +43,7 @@ namespace EshopAguekeng.WebApi.Controllers
             var user = userRepository.Get(username,password);
             if (user == null)
                 return NotFound();
-            return MapUser(user);
+            return Ok(MapUser(user));
         }
         public IHttpActionResult Post([FromBody] UserModel model)
         {
@@ -59,7 +59,7 @@ namespace EshopAguekeng.WebApi.Controllers
                         model.Role,
                         model.Password);
                 user = userRepository.Add(user);
-                return MapUser(user);
+                return Ok(MapUser(user));
             }
             catch(ArgumentNullException ex)
             {
@@ -89,7 +89,7 @@ namespace EshopAguekeng.WebApi.Controllers
                         model.Role,
                         model.Password);
                 user = userRepository.Set(user);
-                return MapUser(user);
+                return Ok(MapUser(user));
             }
             catch (ArgumentNullException ex)
             {
@@ -105,18 +105,9 @@ namespace EshopAguekeng.WebApi.Controllers
             }
 
         }
-        private IHttpActionResult MapUser(User user)
+        private UserModel MapUser(User user)
         {
-            return Ok
-                (
-                    new UserModel
-                    (
-                         user.Id,
-                         user.Username,
-                         user.Fullname,
-                         user.Password
-                    )
-                );
+            return new UserModel(user?.Id ?? 0, user?.Username, user?.Fullname, user?.Role, user?.Password);
         }
     }
 }

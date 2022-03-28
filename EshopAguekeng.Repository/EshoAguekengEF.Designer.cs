@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\devoir\c#\EshoAguekeng\EshopAguekeng.Repository\EshoAguekengEF.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\EshoAguekeng\EshopAguekeng.Repository\EshoAguekengEF.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

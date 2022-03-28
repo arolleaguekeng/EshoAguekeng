@@ -67,5 +67,6 @@
     <Build Include="dbo\Tables\Category.sql" />
     <Build Include="Security\saa.sql" />
     <Build Include="Security\saa_1.sql" />
+    <Build Include="dbo\Tables\Product.sql" />
   </ItemGroup>
 </Project>

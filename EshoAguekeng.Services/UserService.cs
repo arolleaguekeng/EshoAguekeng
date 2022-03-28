@@ -19,7 +19,7 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> LoginAsync(string username, string password)
         {
             //http://localhost:8081/api
-            string url = $"{client.BaseAddress.AbsoluteUri}Users/username={username}&password={password}";
+            string url = $"{client.BaseAddress.AbsoluteUri}Users/?username={username}&password={password}";
             var response = await client.GetAsync(url);
             var data = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
@@ -88,7 +88,7 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> UpdateAsync(UserModel user)
         {
             //http://localhost:8081/api
-            string url = $"/Users";
+            string url = $"Users";
             StringContent content = new StringContent
             (
                 JsonConvert.SerializeObject(user),

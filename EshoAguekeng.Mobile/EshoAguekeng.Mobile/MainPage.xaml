@@ -11,7 +11,7 @@
             <Label Text="Log In" 
                    FontSize="Title" 
                    HorizontalTextAlignment="Center"
-                   FontFamily="FontSamantha"/>
+                   FontFamily="Samantha"/>
             <Entry x:Name="txtUserName" Placeholder="Enter Your user name"/>
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="txtPassword" IsPassword="True" Placeholder="Enter Your Password"

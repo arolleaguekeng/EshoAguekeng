@@ -25,7 +25,7 @@ namespace EshopAguekeng.Models
             Role = role;
         }
 
-        public UserModel(int id, string username, string fullname, string role,string password)
+        public UserModel(int id, string username, string fullname, string role,string password = null)
             :this(id,username,fullname,role)
         {
             Password = password;
