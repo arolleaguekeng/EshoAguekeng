@@ -62,6 +62,7 @@ namespace EshoAguekeng.Repository
         public IEnumerable<Product> Find(Func<Product, bool> predicate)
         {
             return db.Products.Where(predicate).ToArray();
+
         }
     }
 }
