@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace EshoAguekeng.Mobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FrmCreate : ContentPage
+    public partial class ProductEdit : ContentPage
     {
-        public FrmCreate()
+        public ProductEdit()
         {
             InitializeComponent();
         }
