@@ -14,9 +14,28 @@ namespace EshoAguekeng.Mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductEdit : ContentPage
     {
-        public ProductEdit()
+        private readonly UserModel user;
+
+        public ProductEdit(UserModel user)
         {
             InitializeComponent();
+            this.user = user;
+        }
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                CategoryService service = new CategoryService(App.ServiceBaseAddress);
+                var  categories = await service.GetAsync();
+                var list = categories.ToList();
+                list.Insert(0, new CategoryModel { Name = "Choose a category" });
+                CbCategory.ItemsSource = list;
+            }
+            catch(Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                await DisplayAlert("Bad", "an error occured ! ", "Ok");
+            }
         }
 
         private void btnNext_Clicked(object sender, EventArgs e)
@@ -27,24 +46,26 @@ namespace EshoAguekeng.Mobile
 
         private async void btnSave_Clicked(object sender, EventArgs e)
         {
+            CheckForm();
             Loader.IsVisible = true;
             btnSave.IsEnabled = false;
             try
             {
-                UserService service = new UserService(App.ServiceBaseAddress);
-                UserModel model =
-                    new UserModel
+                var product = new ProductModel
                     (
                         0,
-                        txtUserName.Text,
-                        txtFullname.Text,
-                        txtRole.Text,
-                        txtPassword.Text
+                        txtCode.Text,
+                        txtName.Text,
+                        txtdescription.Text,
+                        float.Parse(txtPrice.Text),
+                        string.Empty,
+                        user.Id,
+                        (CbCategory.SelectedItem as CategoryModel)?.Id ?? 0,
+                        DateTime.Now
+                      
                     );
-                var user = await service.CreateAsync(model);
-                await DisplayAlert("User Added succesfully !", user.Fullname, "Continue");
             }
-            catch (UnauthorizedAccessException ex)
+            catch (InvalidOperationException ex)
             {
                 await DisplayAlert("Error", ex.Message, "Retry");
             }
@@ -62,6 +83,34 @@ namespace EshoAguekeng.Mobile
         {
             framestepA.IsVisible = true;
             framestepB.IsVisible = false;
+        }
+
+        private async void btnCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+        private void CheckForm()
+        {
+            if (string.IsNullOrEmpty(txtCode.Text))
+            {
+                throw new InvalidOperationException("please enter product code !");
+            }
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                throw new InvalidOperationException("please enter product Name !");
+            }
+            if (string.IsNullOrEmpty(txtdescription.Text))
+            {
+                throw new InvalidOperationException("please enter product Description !");
+            }
+            if (string.IsNullOrEmpty(txtPrice.Text))
+            {
+                throw new InvalidOperationException("please enter product Price !");
+            }
+            if (CbCategory.SelectedIndex <= 0)
+            {
+                throw new InvalidOperationException("please choose product category !");
+            }
         }
     }
 }

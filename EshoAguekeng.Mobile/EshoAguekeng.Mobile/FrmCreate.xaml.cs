@@ -52,7 +52,7 @@ namespace EshoAguekeng.Mobile
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.Message);
-                await DisplayAlert("Bad", "an error occured ! ", "Ok");
+                await DisplayAlert("Bad", ex.Message, "Ok");
             }
             Loader.IsVisible = false;
             btnSave.IsEnabled = true;

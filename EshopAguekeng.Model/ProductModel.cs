@@ -17,6 +17,7 @@ namespace EshopAguekeng.Models
         public CategoryModel Category { get; set; }
         public int UserId { get; set; }
         public UserModel User { get; set; }
+        public DateTime CreatedAt { get; set; }
         public ProductModel()
         { 
 
@@ -24,7 +25,7 @@ namespace EshopAguekeng.Models
 
 
         public ProductModel(int id,string code, string name,string description,float price,
-            string photo,int categoryId, int userId) : this()
+            string photo,int categoryId, int userId,DateTime created) : this()
         {
             Id = id;
             Code = code;
@@ -34,11 +35,12 @@ namespace EshopAguekeng.Models
             Photo = photo;
             CategoryId = categoryId;
             UserId = userId;
+            CreatedAt = created;
         }
 
         public ProductModel(int id,string code, string name, string description, float price,
-            string photo, int categoryId, CategoryModel category, int userId, UserModel user)
-            :this(id,code,name,description,price,photo,categoryId,userId)
+            string photo, int categoryId, CategoryModel category, int userId, UserModel user,DateTime created)
+            :this(id,code,name,description,price,photo,categoryId,userId,created)
         {
             Category = category;
             User = user;

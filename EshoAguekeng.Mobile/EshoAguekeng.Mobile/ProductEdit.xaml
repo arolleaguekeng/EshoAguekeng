@@ -7,29 +7,44 @@
              x:Class="EshoAguekeng.Mobile.ProductEdit">
     <ContentPage.Content>
         <Grid>
+            
             <StackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
                 Padding="20"
                 x:Name="framestepA">
                 <!-- Place new controls here -->
-                <Label Text="Add user" FontSize="Title" HorizontalTextAlignment="Center"
+                <Label Text="Edit Product" FontSize="Header" HorizontalTextAlignment="Center"
                        FontFamily="MyAwesomeCustomFont"/>
-                <Entry x:Name="txtUserName" Placeholder="Enter Your user name" />
-                <Entry x:Name="txtFullname" Placeholder="Enter Your Full name"/>
+                <Entry x:Name="txtCode" Placeholder="Enter Product Code" />
+                <Entry x:Name="txtName" Placeholder="Enter Product Name"/>
+                <Picker x:Name="CbCategory"/>
                 <Button x:Name="btnNext"
                 Text="Next" 
                 Clicked="btnNext_Clicked"
+                        ContentLayout="Right,0"
+
+                Style="{DynamicResource ButtonStyle}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="FontFaSolid900"
+                                         Glyph="&#xf105;"/>
+                    </Button.ImageSource>
+                </Button>
+                <Button x:Name="btnCancel"
+                Text="Cancel" 
+                Clicked="btnCancel_Clicked"
                 Style="{DynamicResource ButtonStyle}"/>
             </StackLayout>
-            <StackLayout 
+            <StackLayout
                 Spacing="10" 
                 VerticalOptions="Center" 
                 Padding="20" 
                 IsVisible="False"
                 x:Name="framestepB">
-                <Entry x:Name="txtRole" Placeholder="Enter Your role" />
-                <Entry x:Name="txtPassword" IsPassword="True"   Placeholder="Enter Your Password"/>
+                <Label Text="Edit Product" FontSize="Header" HorizontalTextAlignment="Center"
+                       FontFamily="MyAwesomeCustomFont"/>
+                <Entry x:Name="txtPrice" Placeholder="Enter Price" />
+                <Entry x:Name="txtdescription" IsPassword="True"   Placeholder="Enter description"/>
                 <Button x:Name="btnSave"
                 Text="Save" 
                 Clicked="btnSave_Clicked"
@@ -37,7 +52,12 @@
                 <Button x:Name="btnPreview"
                 Text="Preview" 
                 Clicked="btnPreview_Clicked"
-                Style="{DynamicResource ButtonStyle}"/>
+                Style="{DynamicResource ButtonStyle}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="FontFaSolid900"
+                                         Glyph="&#xf104;"/>
+                    </Button.ImageSource>
+                </Button>
             </StackLayout>
 
             <ActivityIndicator  x:Name="Loader" IsVisible="False" IsRunning="True" VerticalOptions="Center"/>

@@ -7,28 +7,44 @@ using System.Threading.Tasks;
 
 namespace EshoAguekeng.Services
 {
-    public class UserService
+    public class ProductService
     {
         private readonly HttpClient client;
-        public UserService(string baseAdress)
+        public ProductService(string baseAdress)
         {
             client = new HttpClient();
             client.BaseAddress = new Uri(baseAdress);
         }
 
-        public async Task<UserModel> GetAsync(int id)
+
+
+        public async Task<IEnumerable<ProductModel>> GetAsync()
         {
             //http://localhost:8180/api
-            string url = $"/Users/{id}";
+            string url = $"/products";
             var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<UserModel>(data);
+                return JsonConvert.DeserializeObject<IEnumerable<ProductModel>>(data);
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+
+            else
             {
-                throw new KeyNotFoundException("User not found !");
+                var data = await response.Content.ReadAsStringAsync();
+                throw new Exception($" Status code : {response.StatusCode} \n {data}");
+            }
+        }
+
+        public async Task<ProductModel> GetAsync(int id)
+        {
+            //http://localhost:8180/api
+            string url = $"/products/{id}";
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProductModel>(data);
             }
             else
             {
@@ -37,33 +53,15 @@ namespace EshoAguekeng.Services
             }
         }
 
-        public async Task<UserModel> LoginAsync(string username, string password)
-        {
-            //http://localhost:8180/api
-            string url = $"/Users/?username={username}&password={password}";
-            var response = await client.GetAsync("/Users/?username=a&password=a");
-            var data = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                return JsonConvert.DeserializeObject<UserModel>(data);
-            }
-            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                throw new UnauthorizedAccessException("Username or password is incorrect");
-            }
-            else
-            {
-                throw new Exception($" Status code : {response.StatusCode} \n {data}");
-            }
-        }
+        
 
 
-        public async Task<UserModel> CreateAsync(UserModel user)
+        public async Task<ProductModel> CreateAsync(ProductModel product)
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"/products";
             StringContent content = new StringContent(
-                JsonConvert.SerializeObject(user),
+                JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,
                 "application/json"
                 );
@@ -72,11 +70,11 @@ namespace EshoAguekeng.Services
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<UserModel>(data);
+                return JsonConvert.DeserializeObject<ProductModel>(data);
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
             {
-                throw new DuplicateWaitObjectException($"User name {user.Username} already exists !");
+                throw new DuplicateWaitObjectException($"product name {product.Name} already exists !");
             }
             else
             {
@@ -85,12 +83,12 @@ namespace EshoAguekeng.Services
             }
         }
 
-        public async Task<UserModel> UpdateAsync(UserModel user)
+        public async Task<ProductModel> UpdateAsync(ProductModel product)
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"/products";
             StringContent content = new StringContent(
-                JsonConvert.SerializeObject(user),
+                JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,
                 "application/json"
                 );
@@ -98,16 +96,16 @@ namespace EshoAguekeng.Services
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<UserModel>(data);
+                return JsonConvert.DeserializeObject<ProductModel>(data);
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                throw new KeyNotFoundException($"User id {user.Id} Not found !");
+                throw new KeyNotFoundException($"product id {product.Id} Not found !");
             }
 
             else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
             {
-                throw new DuplicateWaitObjectException($"User name {user.Username} already exists !");
+                throw new DuplicateWaitObjectException($"product name {product.Name} already exists !");
             }
             else
             {
@@ -116,12 +114,12 @@ namespace EshoAguekeng.Services
             }
         }
 
-        public async Task<UserModel> DeleteAsync(UserModel user)
+        public async Task<ProductModel> DeleteAsync(ProductModel product)
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"/products";
             StringContent content = new StringContent(
-                JsonConvert.SerializeObject(user),
+                JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,
                 "application/json"
                 );
@@ -129,16 +127,16 @@ namespace EshoAguekeng.Services
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<UserModel>(data);
+                return JsonConvert.DeserializeObject<ProductModel>(data);
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                throw new KeyNotFoundException($"User id {user.Id} Not found !");
+                throw new KeyNotFoundException($"product id {product.Id} Not found !");
             }
 
             else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
             {
-                throw new DuplicateWaitObjectException($"User name {user.Username} already exists !");
+                throw new DuplicateWaitObjectException($"product name {product.Name} already exists !");
             }
             else
             {

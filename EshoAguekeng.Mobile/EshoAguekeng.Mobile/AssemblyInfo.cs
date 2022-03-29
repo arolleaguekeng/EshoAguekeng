@@ -1,3 +1,4 @@
+using Android.App;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,3 +9,6 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("fa-regular-400.ttf", Alias = "FontFaRegular400")]
 [assembly: ExportFont("fa-solid-900.ttf", Alias = "FontFaSolid900")]
 [assembly: ExportFont("fa-v4compatibility.ttf", Alias = "v4compatibility")]
+
+
+[assembly: Application(UsesCleartextTraffic = true)]

@@ -15,14 +15,17 @@ namespace EshoAguekeng.Mobile
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        private readonly UserModel user;
+
+        public MainPage(UserModel user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private async void ImageButton_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new ProductEdit(user), true);
         }
     }
 }

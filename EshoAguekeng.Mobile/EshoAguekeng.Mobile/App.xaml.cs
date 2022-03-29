@@ -14,13 +14,13 @@ namespace EshoAguekeng.Mobile
             InitializeComponent();
             if (DeviceInfo.DeviceType == DeviceType.Virtual)
             {
-                serviceBaseAddress = "http://192.168.137.1:8180/api/";
+                serviceBaseAddress = "http://192.168.137.1:8180/api";
             }
             else
             {
-                serviceBaseAddress = "http://192.168.43.132:8180/api/";
+                serviceBaseAddress = "http://192.168.43.132:8180/api";
             }
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

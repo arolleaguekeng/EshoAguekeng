@@ -36,8 +36,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v10.0\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ProductPhoto.xaml.cs">
+      <DependentUpon>ProductPhoto.xaml</DependentUpon>
     </Compile>
     <Compile Update="ProductEdit.xaml.cs">
       <DependentUpon>ProductEdit.xaml</DependentUpon>

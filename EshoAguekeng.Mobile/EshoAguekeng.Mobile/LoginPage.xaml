@@ -4,12 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EshoAguekeng.Mobile.LoginPage">
+             x:Class="EshoAguekeng.Mobile.LoginPage"
+             >
     <Grid>
         <StackLayout Spacing="10" VerticalOptions="Center" Padding="20">
             <!-- Place new controls here -->
             <Label Text="Log In" 
-                   FontSize="Title" 
+                   FontSize="Header" 
                    HorizontalTextAlignment="Center"
                    FontFamily="MyAwesomeCustomFont"/>
             <Entry x:Name="txtUserName" Placeholder="Enter Your user name"/>
@@ -24,7 +25,7 @@
                     <ImageButton.Source>
                         <FontImageSource
                             x:Name="FisEye"
-                            Color="Black"
+                            Color="#666"
                             Glyph="&#xf06e;"
                             FontFamily="FontFaRegular400"/>
                     </ImageButton.Source>
