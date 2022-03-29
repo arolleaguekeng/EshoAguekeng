@@ -13,7 +13,8 @@
                 Padding="20"
                 x:Name="framestepA">
                 <!-- Place new controls here -->
-                <Label Text="Add user" FontSize="Title" HorizontalTextAlignment="Center"/>
+                <Label Text="Add user" FontSize="Title" HorizontalTextAlignment="Center"
+                       FontFamily="MyAwesomeCustomFont"/>
                 <Entry x:Name="txtUserName" Placeholder="Enter Your user name" />
                 <Entry x:Name="txtFullname" Placeholder="Enter Your Full name"/>
                 <Button x:Name="btnNext"

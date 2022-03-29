@@ -20,39 +20,9 @@ namespace EshoAguekeng.Mobile
             InitializeComponent();
         }
 
-        private void BtnEye_Clicked(object sender, EventArgs e)
+        private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            txtPassword.IsPassword = !txtPassword.IsPassword;
-        }
 
-        private async void btnConnect_Clicked(object sender, EventArgs e)
-        {
-            Loader.IsVisible = true;
-            btnConnect.IsEnabled = false;
-            try
-            {
-                UserService service = new UserService(App.ServiceBaseAddress);
-                UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
-                await DisplayAlert("Good", user?.Fullname, "Ok");
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                await DisplayAlert("Bad", ex.Message, "Ok");
-
-            }
-
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(ex.Message);
-                await DisplayAlert("Bad", "an error occured ! ", "Ok");
-            }
-            Loader.IsVisible = false;
-            btnConnect.IsEnabled = true;
-        }
-
-        private void Register_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new FrmCreate());
         }
     }
 }

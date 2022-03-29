@@ -36,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ProductEdit.xaml.cs">
       <DependentUpon>ProductEdit.xaml</DependentUpon>
     </Compile>
