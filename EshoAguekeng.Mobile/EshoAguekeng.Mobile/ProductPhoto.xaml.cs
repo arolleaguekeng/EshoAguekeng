@@ -15,11 +15,23 @@ namespace EshoAguekeng.Mobile
     public partial class ProductPhoto : ContentPage
     {
         private readonly ProductModel product;
-        public ProductPhoto(ProductModel product)
+        private readonly UserModel user;
+
+        public ProductPhoto(UserModel user,ProductModel product)
         {
             this.product = product;
+            this.user = user;
             InitializeComponent();
         }
 
+        private void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSave_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

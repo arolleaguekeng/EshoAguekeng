@@ -5,6 +5,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="EshoAguekeng.Mobile.MainPage">
+    <NavigationPage.TitleView>
+        <StackLayout  Orientation="Horizontal"
+                      Spacing="10"
+                      Margin="10">
+            <Label Text="EshopAguekeng"
+                           FontSize="35"
+                           FontAttributes="Bold"
+                           FontFamily="MyAwesomeCustomFont"
+                           LineBreakMode="TailTruncation"
+                           VerticalOptions="Center"
+                   TextColor="Gold"
+                   HorizontalOptions="StartAndExpand"/>
+            <StackLayout Spacing="10" Orientation="Horizontal">
+                <ImageButton BackgroundColor="Transparent">
+                    <ImageButton.Source>
+                        <FontImageSource Glyph="&#xf002;"
+                                     FontFamily="FontFaSolid900"
+                                     Color="White"/>
+                    </ImageButton.Source>
+                </ImageButton>
+                <ImageButton BackgroundColor="Transparent">
+                    <ImageButton.Source>
+                        <FontImageSource Glyph="&#xf2bd;"
+                                     FontFamily="FontFaSolid900"
+                                     Color="White"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout>
+            
+
+        </StackLayout>
+    </NavigationPage.TitleView>
     <Grid>
         <Frame VerticalOptions="Start"
                CornerRadius="20"
@@ -18,7 +50,6 @@
                     <Label Text="Product name"
                            FontSize="Medium"
                            FontAttributes="Bold"
-                           FontFamily="MyAwesomeCustomFont"
                            LineBreakMode="TailTruncation"/>
                     <StackLayout Orientation="Horizontal"
                                  Margin="0,0,20,0">

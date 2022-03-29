@@ -31,7 +31,10 @@ namespace EshopAguekeng.Models
             User = user;
         }
 
-
+        public override string ToString()
+        {
+            return Name;
+        }
 
     }
 }

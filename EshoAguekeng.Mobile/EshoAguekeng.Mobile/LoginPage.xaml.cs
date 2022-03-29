@@ -31,8 +31,9 @@ namespace EshoAguekeng.Mobile
             btnConnect.IsEnabled = false;
             try
             {
-                UserService service = new UserService(App.ServiceBaseAddress);
-                UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
+                //UserService service = new UserService(App.ServiceBaseAddress);
+                //UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
+                var user = new UserModel(1024, "admin", "admin", "admin");
                 Application.Current.MainPage = new NavigationPage(new MainPage(user));
                 await DisplayAlert("Good", user?.Fullname, "Ok");
             }

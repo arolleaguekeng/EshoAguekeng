@@ -19,7 +19,7 @@ namespace EshoAguekeng.Services
         public async Task<IEnumerable<CategoryModel>> GetAsync()
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"/Categorys";
             var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {

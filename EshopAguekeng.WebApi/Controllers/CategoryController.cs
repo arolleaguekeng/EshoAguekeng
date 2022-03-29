@@ -17,6 +17,19 @@ namespace EshopAguekeng.WebApi.Controllers
         {
             categoryRepository = new CategoryRepository();
         }
+
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            var category = categoryRepository.Find
+                (
+                    x => true 
+                    
+                );
+            return Ok(category.Select(x => MapCategory(x)).ToArray());
+        }
+
+
         [HttpGet]
         public IHttpActionResult Get(int id)
         {

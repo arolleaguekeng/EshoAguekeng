@@ -23,19 +23,27 @@ namespace EshoAguekeng.Mobile
         }
         protected async override void OnAppearing()
         {
+            Loader.IsVisible = true;
             try
             {
                 CategoryService service = new CategoryService(App.ServiceBaseAddress);
                 var  categories = await service.GetAsync();
                 var list = categories.ToList();
+
+                //code temporaire
+                list.Add(new CategoryModel(1,"Smartphone",1024));
+                //
+
                 list.Insert(0, new CategoryModel { Name = "Choose a category" });
                 CbCategory.ItemsSource = list;
+                CbCategory.SelectedIndex = 0;
             }
             catch(Exception ex)
             {
                 Console.Error.WriteLine(ex.Message);
                 await DisplayAlert("Bad", "an error occured ! ", "Ok");
             }
+            Loader.IsVisible = false;
         }
 
         private void btnNext_Clicked(object sender, EventArgs e)
@@ -64,6 +72,7 @@ namespace EshoAguekeng.Mobile
                         DateTime.Now
                       
                     );
+                await Navigation.PushModalAsync(new ProductPhoto(user,product));
             }
             catch (InvalidOperationException ex)
             {

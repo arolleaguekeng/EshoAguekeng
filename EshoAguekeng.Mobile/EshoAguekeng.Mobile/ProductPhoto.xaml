@@ -5,6 +5,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="EshoAguekeng.Mobile.ProductPhoto">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout
+                Spacing="10" 
+                VerticalOptions="Center" 
+                Padding="20" 
+                IsVisible="False"
+                x:Name="framestepB">
+                <Button x:Name="BtnSave"
+                Text="Save" 
+                Clicked="BtnSave_Clicked"
+                Style="{DynamicResource ButtonStyle}"/>
+                <Button x:Name="BtnCancel"
+                Text="Preview" 
+                Clicked="BtnCancel_Clicked"
+                Style="{DynamicResource ButtonStyle}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="FontFaSolid900"
+                                         Glyph="&#xf104;"/>
+                    </Button.ImageSource>
+                </Button>
+            </StackLayout>
 
-
+            <ActivityIndicator  x:Name="Loader" IsVisible="False" IsRunning="True" VerticalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#000000"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

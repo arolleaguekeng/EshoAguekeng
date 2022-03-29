@@ -185,7 +185,8 @@ namespace EshopAguekeng.WebApi.Controllers
                     product.CategoryId,
                     CategorysController.MapCategory(product.Category),
                     product.UserId,
-                    UsersController.MapUser(product.User)
+                    UsersController.MapUser(product.User),
+                    DateTime.Now
                 );
         }
     }
