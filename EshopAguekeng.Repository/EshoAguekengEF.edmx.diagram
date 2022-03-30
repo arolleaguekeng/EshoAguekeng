@@ -5,13 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b7c0188bb44b44a2b01442218b352643" Name="Diagram1">
-        <EntityTypeShape EntityType="EshopAguekengModel.Category" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EshopAguekengModel.Category" Width="1.5" PointX="4.625" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EshopAguekengModel.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="EshopAguekengModel.FK_Category_User" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EshopAguekengModel.Product" Width="1.5" PointX="1.875" PointY="4.125" />
+        <EntityTypeShape EntityType="EshopAguekengModel.Product" Width="1.5" PointX="1.75" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="EshopAguekengModel.FK_Product_Product" />
-        <AssociationConnector Association="EshopAguekengModel.FK_Product_Product1" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

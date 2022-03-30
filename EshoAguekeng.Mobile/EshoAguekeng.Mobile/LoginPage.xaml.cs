@@ -1,11 +1,13 @@
 ﻿using EshoAguekeng.Services;
 using EshopAguekeng.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EshoAguekeng.Mobile
@@ -15,6 +17,7 @@ namespace EshoAguekeng.Mobile
     [DesignTimeVisible(false)]
     public partial class LoginPage : ContentPage
     {
+        //SecureStockage.RemoveAll
         public LoginPage()
         {
             InitializeComponent();
@@ -34,6 +37,7 @@ namespace EshoAguekeng.Mobile
                 //UserService service = new UserService(App.ServiceBaseAddress);
                 //UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
                 var user = new UserModel(1024, "admin", "admin", "admin");
+                await SecureStorage.SetAsync("user_session", JsonConvert.SerializeObject(user));
                 Application.Current.MainPage = new NavigationPage(new MainPage(user));
                 await DisplayAlert("Good", user?.Fullname, "Ok");
             }

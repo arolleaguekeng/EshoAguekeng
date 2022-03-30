@@ -56,10 +56,10 @@ namespace EshoAguekeng.Services
         
 
 
-        public async Task<ProductModel> CreateAsync(ProductModel product)
+        public async Task<ProductModel> CreateAsync(ProductModel product , byte[] photo )
         {
             //http://localhost:8180/api
-            string url = $"/products";
+            string url = $"/Products";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,

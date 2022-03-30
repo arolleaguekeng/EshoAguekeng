@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EshopAguekeng.Models;
+using Newtonsoft.Json;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,7 +22,14 @@ namespace EshoAguekeng.Mobile
             {
                 serviceBaseAddress = "http://192.168.43.132:8180/api";
             }
-            MainPage = new NavigationPage(new LoginPage());
+            var json = SecureStorage.GetAsync("user_session").Result;
+            if(string.IsNullOrEmpty(json))
+                MainPage = new NavigationPage(new LoginPage());
+            else
+            {
+                var user = JsonConvert.DeserializeObject<UserModel>(json);
+                MainPage = new NavigationPage(new MainPage(user));
+            }
         }
 
         protected override void OnStart()

@@ -6,31 +6,43 @@
              mc:Ignorable="d"
              x:Class="EshoAguekeng.Mobile.ProductPhoto">
     <ContentPage.Content>
-        <Grid>
-            <StackLayout
-                Spacing="10" 
-                VerticalOptions="Center" 
-                Padding="20" 
-                IsVisible="False"
-                x:Name="framestepB">
-                <Button x:Name="BtnSave"
-                Text="Save" 
-                Clicked="BtnSave_Clicked"
-                Style="{DynamicResource ButtonStyle}"/>
-                <Button x:Name="BtnCancel"
-                Text="Preview" 
-                Clicked="BtnCancel_Clicked"
-                Style="{DynamicResource ButtonStyle}">
-                    <Button.ImageSource>
-                        <FontImageSource FontFamily="FontFaSolid900"
-                                         Glyph="&#xf104;"/>
-                    </Button.ImageSource>
-                </Button>
-            </StackLayout>
+        <ScrollView>
+            <Grid>
+                <Grid Padding="20" RowDefinitions="100, * , 150">
+                    <!-- Place new controls here -->
+                    <Label Text="Edit Photo" 
+                   FontSize="Header" 
+                   HorizontalTextAlignment="Center"
+                   FontFamily="MyAwesomeCustomFont"
+                               Grid.Row="0"/>
+                    <Image x:Name="Img"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"
+                                   Source="Img.png"
+                                   Grid.Row="1"/>
 
-            <ActivityIndicator  x:Name="Loader" IsVisible="False" IsRunning="True" VerticalOptions="Center"/>
-        </Grid>
+                    <StackLayout Grid.Row="2">
+                        <Button x:Name="btnPicture"
+                                      Text="Take a picture" 
+                                      Clicked="btnPicture_Clicked"/>
+                        <Button x:Name="btnSave"
+                                      Text="Save" 
+                                      Clicked="btnSave_Clicked"
+                                      Style="{DynamicResource ButtonStyle}"/>
+                        
+                    </StackLayout>
+                    <ActivityIndicator  x:Name="Loader" IsVisible="False" 
+                                    IsRunning="True" VerticalOptions="Center"/>
+                </Grid>
+                
+            </Grid>
+        </ScrollView>
+        
+        
+        
+
     </ContentPage.Content>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -39,4 +51,5 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    
 </ContentPage>

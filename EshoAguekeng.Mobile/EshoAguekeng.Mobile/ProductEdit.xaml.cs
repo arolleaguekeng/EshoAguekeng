@@ -26,23 +26,25 @@ namespace EshoAguekeng.Mobile
             Loader.IsVisible = true;
             try
             {
-                CategoryService service = new CategoryService(App.ServiceBaseAddress);
-                var  categories = await service.GetAsync();
-                var list = categories.ToList();
+                //CategoryService service = new CategoryService(App.ServiceBaseAddress);
+                //var  categories = await service.GetAsync();
+                //var list = categories.ToList();
+                var list = new List<CategoryModel>();
 
                 //code temporaire
-                list.Add(new CategoryModel(1,"Smartphone",1024));
                 //
 
                 list.Insert(0, new CategoryModel { Name = "Choose a category" });
+                list.Insert(1, new CategoryModel { Name = "Smartphone" });
                 CbCategory.ItemsSource = list;
                 CbCategory.SelectedIndex = 0;
             }
             catch(Exception ex)
             {
                 Console.Error.WriteLine(ex.Message);
-                await DisplayAlert("Bad", "an error occured ! ", "Ok");
+                await DisplayAlert("Bad", ex.Message, "Ok");
             }
+            base.OnAppearing();
             Loader.IsVisible = false;
         }
 
@@ -76,14 +78,15 @@ namespace EshoAguekeng.Mobile
             }
             catch (InvalidOperationException ex)
             {
-                await DisplayAlert("Error", ex.Message, "Retry");
+                await DisplayAlert("Error", ex.Message +ex.InnerException, "Retry");
             }
 
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.Message);
-                await DisplayAlert("Bad", "an error occured ! ", "Ok");
+                await DisplayAlert("Bad", ex.Message, "Ok");
             }
+            
             Loader.IsVisible = false;
             btnSave.IsEnabled = true;
         }
