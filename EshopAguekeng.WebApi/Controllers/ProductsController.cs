@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 
@@ -151,10 +152,9 @@ namespace EshopAguekeng.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("Image/{id}")]
-        public HttpResponseMessage GetImage(int id)
+        public HttpResponseMessage GetImage(int imageId)
         {
-            var product = productRepository.Get(id);
+            var product = productRepository.Get(imageId);
             if (product == null || product.Photo == null)
                 return null;
 
@@ -165,6 +165,9 @@ namespace EshopAguekeng.WebApi.Controllers
 
             var response = Request.CreateResponse(HttpStatusCode.OK);
             response.Content = new StreamContent(stream);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+            
+
             return response;
         }
 

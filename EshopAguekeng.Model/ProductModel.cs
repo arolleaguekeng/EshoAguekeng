@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EshopAguekeng.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,15 +13,28 @@ namespace EshopAguekeng.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        private string priceToString;
+        public string PriceToString 
+        {
+            get => Price.ToString("NO") + "FCFA" ;
+            set => priceToString = value; 
+        }
         public string Photo { get; set; }
         public int CategoryId { get; set; }
         public CategoryModel Category { get; set; }
         public int UserId { get; set; }
+
         public UserModel User { get; set; }
         public DateTime CreatedAt { get; set; }
-        public ProductModel()
+        private string createdAtTostring;
+        public string CreatedAtTostring
+        {
+            get => CreatedAt.ToRelativeFormat() ;
+            set => createdAtTostring = value; 
+        }
+    public ProductModel()
         { 
-
+            
         }
 
 

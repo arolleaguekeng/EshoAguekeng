@@ -22,10 +22,36 @@ namespace EshoAguekeng.Mobile
             InitializeComponent();
             this.user = user;
         }
+        protected async override void OnAppearing()
+        {
+            Loader.IsVisible = true;
+            try
+            {
+                ProductService service = new ProductService(App.ServiceBaseAddress);
+                var products = await service.GetAsync();
+                CvProduct.ItemsSource = products;
+                Console.WriteLine("------------------------------>"+products.First().Photo);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+                await DisplayAlert("Bad", ex.Message, "Ok");
+            }
+            base.OnAppearing();
+            Loader.IsVisible = false;
+            base.OnAppearing();
+        }
 
         private async void ImageButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new ProductEdit(user), true);
+            await Navigation.PushModalAsync(new ProductEdit(user,OnAppearing), true);
+        }
+        
+
+        private void Rv_Refreshing(object sender, EventArgs e)
+        {
+            Rv.IsRefreshing = false;
+            OnAppearing();
         }
     }
 }

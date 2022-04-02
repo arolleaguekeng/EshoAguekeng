@@ -15,11 +15,13 @@ namespace EshoAguekeng.Mobile
     public partial class ProductEdit : ContentPage
     {
         private readonly UserModel user;
+        private readonly Action callBack;
 
-        public ProductEdit(UserModel user)
+        public ProductEdit(UserModel user, Action callBack)
         {
             InitializeComponent();
             this.user = user;
+            this.callBack = callBack;
         }
         protected async override void OnAppearing()
         {
@@ -74,7 +76,7 @@ namespace EshoAguekeng.Mobile
                         DateTime.Now
                       
                     );
-                await Navigation.PushModalAsync(new ProductPhoto(user,product));
+                await Navigation.PushModalAsync(new ProductPhoto(user,product,callBack));
             }
             catch (InvalidOperationException ex)
             {
@@ -123,6 +125,14 @@ namespace EshoAguekeng.Mobile
             {
                 throw new InvalidOperationException("please choose product category !");
             }
+
+        }
+
+        protected override void OnDisappearing()
+        {
+            if (callBack != null)
+                callBack();
+            base.OnDisappearing();
         }
     }
 }

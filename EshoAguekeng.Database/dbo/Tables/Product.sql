@@ -8,6 +8,7 @@
     [CategoryId]  INT             NOT NULL,
     [UserId]      INT             NOT NULL,
     CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Product_Category] FOREIGN KEY ([CategoryId]) REFERENCES [dbo].[Category] ([Id]),
     CONSTRAINT [FK_Product_Product] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT [IX_Product] UNIQUE NONCLUSTERED ([Code] ASC)
 );
@@ -15,4 +16,11 @@
 
 
 
+
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Product_1]
+    ON [dbo].[Product]([Id] ASC);
 
