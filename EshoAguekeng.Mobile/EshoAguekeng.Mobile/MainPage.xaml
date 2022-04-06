@@ -15,21 +15,23 @@
                            FontFamily="MyAwesomeCustomFont"
                            LineBreakMode="TailTruncation"
                            VerticalOptions="Center"
-                   TextColor="Gold"
-                   HorizontalOptions="StartAndExpand"/>
+                           TextColor="Gold"
+                           HorizontalOptions="StartAndExpand"/>
             <StackLayout Spacing="10" Orientation="Horizontal">
                 <ImageButton BackgroundColor="Transparent">
                     <ImageButton.Source>
                         <FontImageSource Glyph="&#xf002;"
-                                     FontFamily="FontFaSolid900"
-                                     Color="White"/>
+                                         FontFamily="FontFaSolid900"
+                                         Color="White"/>
                     </ImageButton.Source>
                 </ImageButton>
-                <ImageButton BackgroundColor="Transparent">
+                <ImageButton BackgroundColor="Transparent"
+                             x:Name="btnProfile"
+                             Clicked="btnProfile_Clicked">
                     <ImageButton.Source>
                         <FontImageSource Glyph="&#xf2bd;"
-                                     FontFamily="FontFaSolid900"
-                                     Color="White"/>
+                                         FontFamily="FontFaSolid900"
+                                         Color="White"/>
                     </ImageButton.Source>
                 </ImageButton>
             </StackLayout>
@@ -40,7 +42,9 @@
     <Grid>
         <RefreshView x:Name="Rv" Refreshing="Rv_Refreshing"
                      IsRefreshing="False">
-            <CollectionView x:Name="CvProduct">
+            <CollectionView x:Name="CvProduct"
+                            SelectionChanged="CvProduct_SelectionChanged"
+                            SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
@@ -49,10 +53,11 @@
                                Margin="0"
                                Padding="0"
                                BackgroundColor="WhiteSmoke">
-                            <Grid ColumnDefinitions="150,*">
-                                <Image Source="{Binding Photo}" Aspect="AspectFill"/>
-                                <StackLayout VerticalOptions="Center"
-                             Grid.Column="1">
+                            <Grid ColumnDefinitions="110,*">
+                                <!--<Image Source="{Binding Photo}" Aspect="AspectFill" Grid.Column="0"/>-->
+                                    <Image Source="{Binding Photo}" Aspect="AspectFill" Grid.Column="0"/>
+                                    <StackLayout VerticalOptions="Center"
+                                             Grid.Column="1">
                                     <Label Text="{Binding Name}"
                                            FontSize="Medium"
                                            FontAttributes="Bold"
@@ -74,8 +79,8 @@
                                                HorizontalOptions="End"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal"
-                                 Spacing="20"
-                                 Margin="0,0,10,0">
+                                                 Spacing="20"
+                                                 Margin="0,0,10,0">
                                         <StackLayout Spacing="0">
                                             <ImageButton BackgroundColor="Transparent">
                                                 <ImageButton.Source>
@@ -84,8 +89,9 @@
                                                      Color="#666"/>
                                                 </ImageButton.Source>
                                             </ImageButton>
-                                            <Label Text="10k"
-                                   HorizontalOptions="Center"/>
+                                            <Label Text="{Binding LikeToString}"
+                                                   HorizontalOptions="Center"
+                                                   FontSize="Micro"/>
                                         </StackLayout>
 
 
@@ -97,8 +103,9 @@
                                                      Color="#666"/>
                                                 </ImageButton.Source>
                                             </ImageButton>
-                                            <Label Text="7"
-                                   HorizontalOptions="Center"/>
+                                            <Label Text="{Binding HangryToString}"
+                                                   HorizontalOptions="Center"
+                                                   FontSize="Micro"/>
                                         </StackLayout>
 
 
@@ -113,12 +120,45 @@
                                                      Color="#666"/>
                                                 </ImageButton.Source>
                                             </ImageButton>
-                                            <Label Text="5M"
-                                   HorizontalOptions="Center"/>
+                                            <Label Text="{Binding SharedToString}"
+                                                   HorizontalOptions="Center"
+                                                   FontSize="Micro"/>
+                                        </StackLayout>
+                                        
+
+                                        <StackLayout Spacing="0">
+                                            <ImageButton BackgroundColor="Transparent">
+                                                <ImageButton.Source>
+                                                    <FontImageSource Glyph="&#xf075;"
+                                                    FontFamily="FontFaSolid900"
+                                                    Color="#666"/>
+                                                </ImageButton.Source>
+                                            </ImageButton>
+                                            <Label Text="{Binding CommentToString}"
+                                                HorizontalOptions="Center"
+                                                    FontSize="Micro"/>
                                         </StackLayout>
 
-                                    </StackLayout>
 
+
+                                            <StackLayout Spacing="0">
+                                                <Label Text="&#xf53b;"
+                                                   FontFamily="FontFaSolid900"
+                                                   TextColor="CornFlowerBlue"
+                                                       FontSize="15"/>
+                                                <Label Text="{Binding BuyToString}"
+                                                    HorizontalOptions="Center"
+                                                    FontSize="Micro"/>
+                                            <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ImageButton_Clicked_1"
+                                                                          CommandParameter="{Binding Product}"/>
+                                                </StackLayout.GestureRecognizers>
+                                            
+                                                                
+                                        </StackLayout>
+
+
+                                    </StackLayout>
 
                                 </StackLayout>
                             </Grid>

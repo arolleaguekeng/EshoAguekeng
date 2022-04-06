@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EshopAguekeng.Model
 {
@@ -78,7 +79,7 @@ namespace EshopAguekeng.Model
         }
 
         #endregion
-        public static string ToOrdinal(this Int32 value)
+        public static string ToOrdinal(this int value)
         {
             var ordinal = "";
 
@@ -104,6 +105,27 @@ namespace EshopAguekeng.Model
 
             return ordinal;
         }
+
+
+        private static List<Tuple<int, string>> ZeroesAndLetters = new List<Tuple<int, string>>()
+        {
+            new Tuple<int, string>(15, "Q"),
+            new Tuple<int, string>(12, "T"),
+            new Tuple<int, string>(9, "B"),
+            new Tuple<int, string>(6, "M"),
+            new Tuple<int, string>(3, "K"),
+        };
+
+        public static string ToRelativeFormat(this double num)
+        {
+            int zeroCount = num.ToString().Length;
+            for (int i = 0; i < ZeroesAndLetters.Count; i++)
+                if (zeroCount >= ZeroesAndLetters[i].Item1)
+                    return  Math.Round(num / Math.Pow(10, ZeroesAndLetters[i].Item1),1).ToString() + ZeroesAndLetters[i].Item2;
+            return num.ToString();
+        }
+
+
     }
         
 }

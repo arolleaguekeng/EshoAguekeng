@@ -45,8 +45,17 @@
     <Compile Update="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ProductEdit.xaml.cs">
-      <DependentUpon>ProductEdit.xaml</DependentUpon>
+    <Compile Update="ProductBuyPage.xaml.cs">
+      <DependentUpon>ProductBuyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ProductDetailPage.xaml.cs">
+      <DependentUpon>ProductDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ProductEditPage.xaml.cs">
+      <DependentUpon>ProductEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ProductPhotoPage.xaml.cs">
+      <DependentUpon>ProductPhotoPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -54,7 +63,10 @@
     <EmbeddedResource Update="FrmCreate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ProductPhoto.xaml">
+    <EmbeddedResource Update="ProductPhotoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

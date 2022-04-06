@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace EshoAguekeng.Mobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProductEdit : ContentPage
+    public partial class ProductEditPage : ContentPage
     {
         private readonly UserModel user;
         private readonly Action callBack;
 
-        public ProductEdit(UserModel user, Action callBack)
+        public ProductEditPage(UserModel user, Action callBack)
         {
             InitializeComponent();
             this.user = user;
@@ -28,16 +28,11 @@ namespace EshoAguekeng.Mobile
             Loader.IsVisible = true;
             try
             {
-                //CategoryService service = new CategoryService(App.ServiceBaseAddress);
-                //var  categories = await service.GetAsync();
-                //var list = categories.ToList();
-                var list = new List<CategoryModel>();
-
-                //code temporaire
-                //
+                CategoryService service = new CategoryService(App.ServiceBaseAddress);
+                var categories = await service.GetAsync();
+                var list = categories.ToList();
 
                 list.Insert(0, new CategoryModel { Name = "Choose a category" });
-                list.Insert(1, new CategoryModel { Name = "Smartphone" });
                 CbCategory.ItemsSource = list;
                 CbCategory.SelectedIndex = 0;
             }
@@ -71,12 +66,11 @@ namespace EshoAguekeng.Mobile
                         txtdescription.Text,
                         float.Parse(txtPrice.Text),
                         string.Empty,
-                        user.Id,
                         (CbCategory.SelectedItem as CategoryModel)?.Id ?? 0,
+                        user.Id,
                         DateTime.Now
-                      
                     );
-                await Navigation.PushModalAsync(new ProductPhoto(user,product,callBack));
+                await Navigation.PushModalAsync(new ProductPhotoPage(user,product,callBack));
             }
             catch (InvalidOperationException ex)
             {

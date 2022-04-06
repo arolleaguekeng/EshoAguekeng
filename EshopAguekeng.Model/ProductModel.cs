@@ -32,9 +32,56 @@ namespace EshopAguekeng.Models
             get => CreatedAt.ToRelativeFormat() ;
             set => createdAtTostring = value; 
         }
-    public ProductModel()
-        { 
-            
+
+        public double Like { get; set; }
+
+        private string likeToString;
+        public string LikeToString
+        {
+            get => Like.ToRelativeFormat();
+            set => likeToString = value;
+        }
+        public double Hangry { get; set; }
+
+
+        private string hangryToString;
+        public string HangryToString
+        {
+            get => Hangry.ToRelativeFormat();
+            set => hangryToString = value;
+        }
+        public double Shared { get; set; }
+        private string sharedToString;
+        public string SharedToString
+        {
+            get => Shared.ToRelativeFormat();
+            set => sharedToString = value;
+        }
+        public double Buy { get; set; }
+        private string buyToString;
+        public string BuyToString
+        {
+            get => Buy.ToRelativeFormat();
+            set => buyToString = value;
+        }
+
+        public double Comment { get; set; }
+        private string commentToString;
+        public string CommentToString
+        {
+            get => Comment.ToRelativeFormat();
+            set => commentToString = value;
+        }
+
+
+        public ProductModel()
+        {
+            var rand = new Random();
+            Like = rand.Next(0, int.MaxValue);
+            Hangry = rand.Next(0, 10);
+            Shared = rand.Next(0, int.MaxValue);
+            Shared = rand.Next(0, 20000);
+            Buy = rand.Next(0, 10);
         }
 
 

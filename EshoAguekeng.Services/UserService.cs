@@ -19,7 +19,7 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> GetAsync(int id)
         {
             //http://localhost:8180/api
-            string url = $"/Users/{id}";
+            string url = $"Users/{id}";
             var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
@@ -40,8 +40,8 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> LoginAsync(string username, string password)
         {
             //http://localhost:8180/api
-            string url = $"/Users/?username={username}&password={password}";
-            var response = await client.GetAsync("/Users/?username=a&password=a");
+            string url = $"Users/?username={username}&password={password}";
+            var response = await client.GetAsync(url);
             var data = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -61,7 +61,7 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> CreateAsync(UserModel user)
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"Users";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(user),
                 System.Text.Encoding.UTF8,
@@ -88,7 +88,7 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> UpdateAsync(UserModel user)
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"Users";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(user),
                 System.Text.Encoding.UTF8,
@@ -119,7 +119,7 @@ namespace EshoAguekeng.Services
         public async Task<UserModel> DeleteAsync(UserModel user)
         {
             //http://localhost:8180/api
-            string url = $"/Users";
+            string url = $"Users";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(user),
                 System.Text.Encoding.UTF8,

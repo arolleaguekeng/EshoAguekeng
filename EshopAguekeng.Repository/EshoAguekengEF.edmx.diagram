@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="133017a55a3848ffbabe7bce0b565bec" Name="Diagram1">
-        <EntityTypeShape EntityType="EshopAguekengModel.Category" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EshopAguekengModel.Product" Width="1.5" PointX="5.625" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EshopAguekengModel.User" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="EshopAguekengModel.FK_Category_User" ManuallyRouted="false" />
-        <AssociationConnector Association="EshopAguekengModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="EshopAguekengModel.FK_Product_Product" ManuallyRouted="false" />
+      <Diagram DiagramId="9ed391624635445180161183d608bbc5" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="EshopAguekeng.Repository.Category" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EshopAguekeng.Repository.Product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EshopAguekeng.Repository.User" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="EshopAguekeng.Repository.FK_Category_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EshopAguekeng.Repository.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="EshopAguekeng.Repository.FK_Product_Product" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

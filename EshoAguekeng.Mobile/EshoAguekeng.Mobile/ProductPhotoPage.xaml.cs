@@ -13,14 +13,14 @@ using Xamarin.Forms.Xaml;
 namespace EshoAguekeng.Mobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProductPhoto : ContentPage
+    public partial class ProductPhotoPage : ContentPage
     {
         private readonly UserModel user;
         private  ProductModel product;
         private readonly Action callBack;
         private string imageFile;
 
-        public ProductPhoto(UserModel user, ProductModel product, Action callBack)
+        public ProductPhotoPage(UserModel user, ProductModel product, Action callBack)
         {
             InitializeComponent();
             this.user = user;
@@ -31,6 +31,8 @@ namespace EshoAguekeng.Mobile
         private async void btnCancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();
+            if (callBack != null)
+                callBack();
         }
 
 
@@ -98,8 +100,10 @@ namespace EshoAguekeng.Mobile
                 await DisplayAlert("Good", "Save done", "Ok");
                 await Navigation.PopToRootAsync(true);
                 int numModals = Application.Current.MainPage.Navigation.ModalStack.Count;
+
                 if (callBack != null)
                     callBack();
+
                 for (int currModal = 0; currModal < numModals; currModal++)
                 {
                     await Application.Current.MainPage.Navigation.PopModalAsync();

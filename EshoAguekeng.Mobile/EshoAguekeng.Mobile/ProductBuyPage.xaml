@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EshoAguekeng.Mobile.ProductBuyPage">
+    <ContentPage.Content>
+
+
+        <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="100,50,*,50"
+                Padding="20"
+                  VerticalOptions="Center">
+            
+            <Label Text="Paiement" 
+                   FontSize="Header" 
+                   HorizontalTextAlignment="Center"
+                   FontFamily="MyAwesomeCustomFont"
+                               Grid.Row="0"
+                       Grid.ColumnSpan="2"/>
+            <StackLayout Orientation="Horizontal"
+                             Grid.Row="1"
+                             Grid.ColumnSpan="2">
+                    <Label Text="{Binding Product.Name}"
+                           FontAttributes="Bold"
+                           LineBreakMode="TailTruncation"
+                           HorizontalOptions="StartAndExpand"/>
+                    <Label Text="{Binding Product.PriceToString}"
+                           FontAttributes="Bold"
+                           TextColor="CornflowerBlue"/>
+
+                </StackLayout>
+            <ImageButton Source="logoOm.jpg" 
+                       Aspect="AspectFill"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                             BackgroundColor="Transparent"/>
+            <ImageButton Source="LogoMoMo.jpg"
+                       Aspect="AspectFill"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       BackgroundColor="Transparent"/>
+
+            <Button x:Name="btnCancel"
+                        Grid.Row="3"
+                        Text="Cancel" 
+                        Clicked="btnCancel_Clicked"
+                        Style="{DynamicResource ButtonStyle}"
+                        Grid.ColumnSpan="2"
+                        />
+            <ActivityIndicator  x:Name="Loader"
+                            IsVisible="False" 
+                            IsRunning="True" 
+                            VerticalOptions="Center"/>
+        </Grid>
+
+    </ContentPage.Content>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#000000"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+    </ResourceDictionary>
+    </ContentPage.Resources>
+
+</ContentPage>

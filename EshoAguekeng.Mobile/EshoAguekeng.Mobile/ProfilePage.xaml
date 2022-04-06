@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EshoAguekeng.Mobile.ProfilePage">
+    <ContentPage.Content>
+        <Grid Padding="30" >
+            <Label Text="Profile " FontSize="Header" HorizontalTextAlignment="Center"
+                                FontFamily="MyAwesomeCustomFont" Grid.Row="0"/>
+            <StackLayout Grid.Row="1">
+            
+            <StackLayout>
+                <Label Text="User Name"  />
+                    <Label Text="{Binding User.Fullname, StringFormat ='Ref:#{0}'}"
+                                    FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   VerticalOptions="End"
+                                   LineBreakMode="TailTruncation"/>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Full Name"  />
+                    <Label Text="{Binding User.Fullname, StringFormat ='Ref:#{0}'}"
+                                    FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   VerticalOptions="End"
+                                   LineBreakMode="TailTruncation"/>
+            </StackLayout>
+
+
+            <StackLayout>
+                <Label Text="Role"  />
+                <Label Text="{Binding UserModel.Username, StringFormat ='Ref:#{0}'}"
+                                    FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   VerticalOptions="End"
+                                   LineBreakMode="TailTruncation"/>
+            </StackLayout>
+
+            <Button x:Name="btnLogOut"
+                Text="Logout" 
+                Clicked="btnLogOut_Clicked"
+                Style="{DynamicResource ButtonStyle}">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="FontFaSolid900"
+                                         Glyph="&#xf104;"/>
+                    
+                </Button.ImageSource>
+            </Button>
+
+        </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#000000"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

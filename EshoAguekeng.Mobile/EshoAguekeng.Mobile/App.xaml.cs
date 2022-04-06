@@ -16,11 +16,11 @@ namespace EshoAguekeng.Mobile
             InitializeComponent();
             if (DeviceInfo.DeviceType == DeviceType.Virtual)
             {
-                serviceBaseAddress = "http://192.168.137.1:8180/api";
+                serviceBaseAddress = "http://192.168.43.132:8180/api/";
             }
             else
             {
-                serviceBaseAddress = "http://192.168.43.132:8180/api";
+                serviceBaseAddress = "http://192.168.43.132:8180/api/";
             }
             var json = SecureStorage.GetAsync("user_session").Result;
             if(string.IsNullOrEmpty(json))

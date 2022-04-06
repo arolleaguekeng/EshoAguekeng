@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EshoAguekeng.Mobile.ProductDetailPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="0">
+                
+                <Grid
+                    RowSpacing="0"
+                       Padding="20">
+                    <Label Text="Product " FontSize="Header" HorizontalTextAlignment="Center"
+                                FontFamily="MyAwesomeCustomFont"
+                                Grid.Row="0"/>
+                    <Image Source="{Binding Product.Photo}" Aspect="AspectFill" Grid.Row="1"/>
+
+
+                    <StackLayout 
+                        Grid.Row="2"
+                        Orientation="Horizontal">
+                        <!-- Place new controls here -->
+
+
+                        <StackLayout>
+                            <Label Text="Code"  />
+                            <Label Text="{Binding Product.Code, StringFormat ='Ref:#{0}'}"
+                                    FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   VerticalOptions="End"
+                                   LineBreakMode="TailTruncation"/> 
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Name"/>
+                            <Label Text="{Binding Product.Name}"
+                                    FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   HorizontalOptions="End"
+                                   LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                
+                        <StackLayout>
+                            <Label Text="Price"/>
+                            <Label Text="{Binding Product.PriceToString}"
+                                FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   HorizontalOptions="End"
+                                   LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Category"/>
+                            <Label Text="{Binding Product.Category.Name}"
+                                    FontAttributes="Bold"
+                                    TextColor="CornflowerBlue"
+                                   HorizontalOptions="End"
+                                   LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                        
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <StackLayout>
+                                <Label Text="Description"/>
+                                <Label Text="{Binding Product.Description}"
+                                        FontAttributes="Bold"
+                                        TextColor="CornflowerBlue"/>
+                            </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Publish by"/>
+                            <Label Text="{Binding User.Fullname}"
+                                        FontAttributes="Bold"
+                                        TextColor="CornflowerBlue"/>
+                        </StackLayout>
+                        <Button x:Name="btnBuy"
+                        Text="Save" 
+                        Clicked="btnBuy_Clicked"
+                        Style="{DynamicResource ButtonStyle}">
+
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="FontFaSolid900"
+                                                    Glyph="&#xf53b;"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button x:Name="btnCancel"
+                        Text="Cancel" 
+                        Clicked="btnCancel_Clicked"
+                        Style="{DynamicResource ButtonStyle}"/>
+                    </StackLayout>
+            
+                    <ActivityIndicator  x:Name="Loader" 
+                                        IsVisible="False"
+                                        IsRunning="True"
+                                        VerticalOptions="Center"/>
+        </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#000000"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

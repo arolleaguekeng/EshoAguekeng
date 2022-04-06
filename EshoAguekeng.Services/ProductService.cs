@@ -21,7 +21,7 @@ namespace EshoAguekeng.Services
         public async Task<IEnumerable<ProductModel>> GetAsync()
         {
             //http://localhost:8180/api
-            string url = $"/products";
+            string url = $"Products";
             var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
@@ -39,7 +39,7 @@ namespace EshoAguekeng.Services
         public async Task<ProductModel> GetAsync(int id)
         {
             //http://localhost:8180/api
-            string url = $"/products/{id}";
+            string url = $"Products/{id}";
             var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
@@ -59,7 +59,7 @@ namespace EshoAguekeng.Services
         public async Task<ProductModel> CreateAsync(ProductModel product , byte[] photo )
         {
             //http://localhost:8180/api
-            string url = $"/Products";
+            string url = $"Products";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,
@@ -86,7 +86,7 @@ namespace EshoAguekeng.Services
         public async Task<ProductModel> UpdateAsync(ProductModel product)
         {
             //http://localhost:8180/api
-            string url = $"/products";
+            string url = $"Products";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,
@@ -117,7 +117,7 @@ namespace EshoAguekeng.Services
         public async Task<ProductModel> DeleteAsync(ProductModel product)
         {
             //http://localhost:8180/api
-            string url = $"/products";
+            string url = $"Products";
             StringContent content = new StringContent(
                 JsonConvert.SerializeObject(product),
                 System.Text.Encoding.UTF8,

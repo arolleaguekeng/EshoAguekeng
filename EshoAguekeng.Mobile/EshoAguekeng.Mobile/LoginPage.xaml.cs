@@ -34,9 +34,9 @@ namespace EshoAguekeng.Mobile
             btnConnect.IsEnabled = false;
             try
             {
-                //UserService service = new UserService(App.ServiceBaseAddress);
-                //UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
-                var user = new UserModel(1024, "admin", "admin", "admin");
+                UserService service = new UserService(App.ServiceBaseAddress);
+                UserModel user = await service.LoginAsync(txtUserName.Text, txtPassword.Text);
+                //var user = new UserModel(1024, txtUserName.Text, "admin", txtPassword.Text);
                 await SecureStorage.SetAsync("user_session", JsonConvert.SerializeObject(user));
                 Application.Current.MainPage = new NavigationPage(new MainPage(user));
                 await DisplayAlert("Good", user?.Fullname, "Ok");
@@ -44,9 +44,7 @@ namespace EshoAguekeng.Mobile
             catch (UnauthorizedAccessException ex)
             {
                 await DisplayAlert("Bad", ex.Message, "Ok");
-
             }
-
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.Message);

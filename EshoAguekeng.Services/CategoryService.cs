@@ -19,17 +19,17 @@ namespace EshoAguekeng.Services
         public async Task<IEnumerable<CategoryModel>> GetAsync()
         {
             //http://localhost:8180/api
-            string url = $"/Categorys";
+            string url = $"Categorys";
             var response = await client.GetAsync(url);
+            var data = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                var data = await response.Content.ReadAsStringAsync();
+                
                 return JsonConvert.DeserializeObject<IEnumerable<CategoryModel>>(data);
             }
             
             else
             {
-                var data = await response.Content.ReadAsStringAsync();
                 throw new Exception($" Status code : {response.StatusCode} \n {data}");
             }
         }
